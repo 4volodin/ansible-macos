@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# install Command Line Tools
+xcode-select --install
+
+## install Rosetta for winbox, bin/dark-mode-notify, vnc-viewer
+# /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+
+sudo spctl --master-disable
+
+# install Ansible
+curl https://bootstrap.pypa.io/get-pip.py | python3
+pip3 install --ignore-installed ansible  #если есть проблемы запусти через sudo
+
+ansible-galaxy install -r requirements.yml
+
+ansible-playbook -c local ansible_osx.yml --ask-become-pass
+
+sudo spctl --master-enable
+

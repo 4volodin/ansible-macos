@@ -1,0 +1,26 @@
+---
+## there are some files that protected by MacOS so after  OS update you will need to RUN AGAIN
+# ansible-playbook -c local ansible_osx.yml --ask-become-pass -t touchid
+
+# https://axell.dev/use-touchid-for-sudo-in-terminal-instead-of-password/
+# https://andre.arko.net/2020/07/10/sudo-with-touchid-and-apple-watch-even-inside-tmux/
+# https://apple.stackexchange.com/questions/259093/can-touch-id-on-mac-authenticate-sudo-in-terminal
+- name: install pam_reattach pam module
+  homebrew:
+    name: pam-reattach
+    state: present
+
+- name: enable touch id for sudo commands
+  lineinfile:
+    path: /etc/pam.d/sudo
+    line: "auth       sufficient     pam_tid.so"
+    insertbefore: "^auth       sufficient     pam_smartcard.so$"
+  become: yes
+
+- name: enable persistent touch id for tmux and iterm
+  lineinfile:
+    path: /etc/pam.d/sudo
+    line: "auth       optional       /opt/homebrew/lib/pam/pam_reattach.so"
+    insertbefore: "^auth       sufficient     pam_tid.so$"
+  become: yes
+# it needs to reboot

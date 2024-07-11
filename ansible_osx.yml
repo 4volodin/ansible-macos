@@ -1,0 +1,11 @@
+# Initial server setup
+---
+- hosts: localhost
+  vars_files:
+    - config.yml
+  roles:
+    - role: elliotweiser.osx-command-line-tools
+    - role: geerlingguy.mac.homebrew
+    - role: geerlingguy.mac.mas
+    - role: geerlingguy.mac.dock
+    - initial

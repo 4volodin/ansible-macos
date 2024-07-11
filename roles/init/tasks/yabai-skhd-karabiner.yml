@@ -1,0 +1,31 @@
+---
+- name: "Install homebrew packages"
+  community.general.homebrew:
+    name: [
+      koekeishiya/formulae/yabai,
+      koekeishiya/formulae/skhd,
+    ]
+
+- name: Install core packages via brew casks
+  community.general.homebrew_cask:
+    name: [karabiner-elements]
+  ignore_errors: yes
+
+- name: Start services at login
+  file: src=/opt/homebrew/opt/{{ item }}/homebrew.mxcl.{{ item }}.plist path=~/Library/LaunchAgents/homebrew.mxcl.{{ item }}.plist state=link force=yes
+  with_items:
+    - yabai
+    - skhd
+
+- name: Setup launch agents for services
+  command: launchctl load ~/Library/LaunchAgents/homebrew.mxcl.{{ item }}.plist
+  with_items:
+    - yabai
+    - skhd
+
+- name: Activate karabiner virtual device
+  shell: sudo xattr -dr com.apple.quarantine /Applications/.Karabiner-VirtualHIDDevice-Manager.app
+  become: true
+
+- name: Open karabiner virtual device
+  shell: open /Applications/.Karabiner-VirtualHIDDevice-Manager.app

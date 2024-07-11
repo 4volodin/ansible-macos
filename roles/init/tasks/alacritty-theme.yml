@@ -1,0 +1,11 @@
+- name: Create directory
+  ansible.builtin.file:
+    path: ~/.config/alacritty/themes
+    state: directory
+    mode: '0755'  # Adjust permissions as needed
+
+- name: Clone Git repository
+  ansible.builtin.git:
+    repo: https://github.com/alacritty/alacritty-theme.git
+    dest: "{{ansible_user_dir}}/.config/alacritty/themes"
+    version: master  # Specify the branch or tag if needed

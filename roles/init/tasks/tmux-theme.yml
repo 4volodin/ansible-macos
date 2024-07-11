@@ -1,0 +1,26 @@
+- name: Clone specific files from GitHub repository
+  git:
+    repo: https://github.com/projekt0n/github-theme-contrib.git
+    version: main  # Specify the branch or tag if needed
+    dest: /tmp/github-theme-contrib
+    depth: 1  # Optional: Clone only the latest commit (shallow clone)
+- name: Find files in directory
+  ansible.builtin.find:
+    paths: /tmp/github-theme-contrib/themes/tmux/
+    recurse: no
+    file_type: file
+  register: files_to_move
+- name: Ensure .tmux/themes/ directory exists
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.tmux/themes"
+    state: directory
+- name: Move files to destination directory
+  ansible.builtin.copy:
+    src: "{{ item.path }}"
+    dest: "{{ansible_user_dir}}/.tmux/themes/{{ item.path | basename }}"
+    remote_src: yes
+  loop: "{{ files_to_move.files }}"
+- name: Delete temporary directory
+  file:
+    path: /tmp/github-theme-contrib
+    state: absent

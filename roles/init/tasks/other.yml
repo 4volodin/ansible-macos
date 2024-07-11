@@ -1,0 +1,96 @@
+---
+# Time Machine starts at 7:35 and repeat in 12 hours
+- name: Start services at login
+  copy:
+    src: timemachine/com.voale.tmutil-backup.plist
+    dest: ~/Library/LaunchAgents/com.voale.tmutil-backup.plist
+
+- name: Setup launch agents for services
+  shell: launchctl load -w ~/Library/LaunchAgents/com.voale.tmutil-backup.plist
+
+# ---------------------------------------------------------
+# Symlink to icloud
+- name: Start services at login
+  file: src="~/Library/Mobile\ Documents/com\~apple\~CloudDocs" dest="~/icloud" state=link force=yes
+
+#
+# ---------------------------------------------------------
+# iPhone backup location
+#- name: Start services at login
+#  file: src=~/Library/Application\ Support/MobileSync/Backup/ path=/Volumes/voale-raid1-400Gb/ios_backup state=link force=yes
+
+# ---------------------------------------------------------
+#
+- name: Loopback interface
+  copy:
+    src: loopback-alias/com.user.lo0-loopback.plist
+    dest: /Library/LaunchAgents/com.user.lo0-loopback.plist
+    owner: root
+    group: wheel
+    mode: "0644"
+  become: true
+- name: Setup launch agent for loopback alias
+  command: launchctl load -w /Library/LaunchAgents/com.user.lo0-loopback.plist
+  become: true
+
+# ---------------------------------------------------------
+# Enable Dark mode notify
+# or use launchctl load -F ...
+- name: Enable Dark mode notify
+  copy:
+    src: dark-mode-notify/com.voale.dark-mode-notify.plist
+    dest: ~/Library/LaunchAgents/com.voale.dark-mode-notify.plist
+- name: Lauch dark mode notify
+  shell: launchctl load -w ~/Library/LaunchAgents/com.voale.dark-mode-notify.plist
+# ---------------------------------------------------------
+#
+- name: Disable microphone
+  copy:
+    src: microphone/com.voale.mic-disable.plist
+    dest: ~/Library/LaunchAgents/com.voale.mic-disable.plist
+- name: Launch
+  shell: launchctl load -w ~/Library/LaunchAgents/com.voale.mic-disable.plist
+
+# ---------------------------------------------------------
+#
+# ---------------------------------------------------------
+- name: Toggle microphone
+  copy:
+    src: mic-toggle/Mic-OnOff.workflow
+    dest: ~/Library/Services
+
+#
+# find files in ~/Downloads which haven’t been modified within the past 2 weeks and move them into ~/.Trash.
+- name: Clean Downloads
+  copy:
+    src: cleandownloads/com.voale.cleandownloads.plist
+    dest: ~/Library/LaunchAgents/com.voale.cleandownloads.plist
+- name: Launch
+  shell: launchctl load -w ~/Library/LaunchAgents/cleandownloads.plist
+# ---------------------------------------------------------
+#
+- name: Reset quick look
+  shell: |
+    sudo xattr -cr ~/Library/QuickLook/*.qlgenerator
+    qlmanage -r
+    qlmanage -r cache
+
+# ---------------------------------------------------------
+- name: Delete Adoobe plist
+  file:
+    path: /Library/{{ item }}
+    state: absent
+  with_items:
+    - LaunchDaemons/com.adobe.acc.installer.v2.plist
+    - LaunchDaemons/com.adobe.agsservice.plist
+    - LaunchAgents/com.adobe.AdobeCreativeCloud.plist
+    - LaunchAgents/com.adobe.ccxprocess.plist
+  become: true
+
+# ---------------------------------------------------------
+- name: Create ~/Library/LaunchAgents
+  file:
+    path: ~/.local/share/nvim/backup
+    state: directory
+    mode: "0755"
+

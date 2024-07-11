@@ -1,0 +1,44 @@
+---
+- name: dotfiles
+  import_tasks: dotfiles.yml
+  tags: dotfiles
+
+- name: osx
+  import_tasks: osx.yml
+  tags: osx
+
+- name: ssh
+  import_tasks: ssh.yml
+  tags: ssh
+
+- name: tmux colors
+  import_tasks: tmux-theme.yml
+  tags: tmux-color
+
+- name: alacritty colors
+  import_tasks: alacritty-theme.yml
+  tags: alacritty-color
+
+- name: zsh tmux plugins
+  import_tasks: zsh-tmux-plugins.yml
+  tags: plugins
+
+- name: yabai-skhd-karabiner
+  import_tasks: yabai-skhd-karabiner.yml
+  tags: yabai
+
+- name: yubi-gpg
+  import_tasks: yubi-gpg.yml
+  tags: yubi
+
+- name: extra-packages.yml
+  import_tasks: extra-packages.yml
+  tags: extra
+
+- name: sudo touch_id in tmux
+  import_tasks: sudo-touchid.yml
+  tags: touchid
+
+- name: other
+  import_tasks: other.yml
+  tags: other

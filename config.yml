@@ -1,0 +1,283 @@
+osx_script: "~/.osx --no-restart"
+force_install: true
+
+homebrew_clear_cache: true
+
+pips:
+  - ansible-lint
+  - yamllint
+  - checkov
+  - pre-commit
+  - kubernetes
+  - kopf
+
+projects: # An array of projects to get setup
+  - name: project-1 # This will be the pow host, project-1.dev in this case
+    git: git@github.com:owner/repo.git
+    path: project-1
+    pow: true # Setup a pow host for this project
+
+dockitems_remove:
+  - Launchpad
+  - Messages
+  - Mail
+  - Maps
+  - Photos
+  - FaceTime
+  - Contacts
+  - Notes
+  - TV
+  - Music
+  - Podcasts
+  - "App Store"
+dockitems_persist:
+  - name: Finder
+    path: "/Applications/Finder.app/"
+    pos: 2
+  - name: Calendar
+    path: "/Applications/Calendar"
+    pos: 3
+  - name: Things
+    path: "/Applications/Things3.app"
+    pos: 4
+
+  - name: Alacritty
+    path: "/Applications/Alacritty"
+    pos: 5
+
+  - name: Dash
+    path: "/Applications/Dash.app"
+    pos: 6
+  - name: Visual Studio Code
+    path: "/Applications/Visual Studio Code.app"
+    pos: 7
+
+  - name: Safari
+    path: "/Applications/Safari.app"
+    pos: 8
+  - name: Firefox
+    path: "/Applications/Firefox"
+    pos: 9
+
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+  - homebrew/cask-fonts
+  - homebrew/services
+  - buo/cask-upgrade  # for brew cu - update cask apps
+  - tigase/tigase     # for beagleim
+homebrew_installed_packages:
+  - cmake
+  - glib
+  - ncurses # for tmux(xterm) italic font
+
+  - git
+  - mas
+
+  - alacritty
+  - tmux
+  - neovim
+  - starship
+
+  # for yazi
+  - yazi
+  - unar
+  - jq
+  - poppler
+  - fd
+  - ripgrep
+  - fzf
+  - zoxide
+
+  ## for LF file manager
+  - coreutils                 # gnu utils
+  - findutils                 # find, locate, xargs
+  - gnu-tar
+  - trash-cli
+  # - mediainfo               # display tag data for audio video files
+  # - qrencode
+  # - xpdf
+  # - hexyl                   # hex viewer
+  # - exiftool
+  # - timg                    # image viewer
+  # - pv                      # for progress gpg decrypt
+  # - pdftotext - odt2txt - xmlstarlet - atool - pandoc - chafa
+  # - ffmpegthumbnailer       # for preview video in LF file manager
+
+  ## Files
+  - ncdu
+  #- broot - tree
+
+  ## Arhieve
+  - p7zip
+  - gzip
+
+  ## Utils   #- watchman - fasd - xz - ctags - pwgen
+  - rsync
+  - readline
+  - watch
+
+  ## Net utils   #- curlie - httpie - socat - ipcalc
+  - ngrok
+  - curl
+  - nmap
+  - telnet
+  - wget
+  - iperf3
+  - tor
+  - obfs4proxy # for tor
+    #  - mtr
+
+  ## linter Dockerfile for vscode
+  - hadolint
+  ## linters for terraform
+  - tflint
+  - trivy
+
+  ## kuber
+  - kubectl
+  - kubectx
+  - minikube
+  - helm
+  - terraform
+
+  ## Docker
+  - dive
+  # - ctop #monitoring docker containers
+  # - stern #for kuber https://github.com/wercker/stern
+  # - derailed/popeye/popeye #for kuber  https://github.com/derailed/popeye
+  # - jesseduffield/lazydocker/lazydocker
+
+  ## Man pages   - cheat
+  - tldr
+
+  ## CVS
+  #- subversion - tig - lazygit
+  - diff-so-fancy
+  - git-delta
+  - git-standup
+  - colordiff
+  - gitui
+
+  ## Prompt command line
+  #- bash-completion
+  #- bashdb # bash debugger for vscode plugin
+  - bat
+  - highlight
+  # - fortune
+  # - cowsay
+  # - exa
+
+  ## Monitoring:   - smartmontools - nethogs - ifstat - iftop - gotop - iproute2mac
+  - htop
+
+  ## media
+  - openh264
+  - imagemagick
+  - ffmpeg
+  - youtube-dl # to download video from youtube     youtube-dl -f bestvideo+bestaudio 'link'
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - qlcolorcode
+  - qlstephen
+  - qlmarkdown
+  - quicklook-json
+  - qlprettypatch
+  - quicklook-csv
+  - webpquicklook
+  - suspicious-package
+  - syntax-highlight
+
+  #- font-source-code-pro
+  - font-monaspace
+  - font-hack-nerd-font
+  - font-jetbrains-mono
+  - font-jetbrains-mono-nerd-font
+
+    ## Remote utils - remote-desktop-manager-free - wireshark - cyberduck - zenmap
+  - anydesk
+  - nrlquaker-winbox
+  #- vnc-viewer
+
+    ## VPN/Net
+  #- tunnelblick
+  #- openvpn-connect
+  #- netspot
+
+    ## Dev - mongodb-compass - fiddler - beyond-compare #diff tool - sourcetree
+  - docker
+  - lens
+  - visual-studio-code
+  - dash
+  - fork
+  - rapidapi
+  - dbeaver-community
+  - meld #diff tool
+
+  ## Virtualization: - utm - virtualbox
+
+  ## Social   # - viber - slack - rocket-chat - beagleim
+  - zoom
+  - telegram
+  - skype
+
+
+  ## Media   #- screenflow - paintbrush - cleanshot - maccy - iina
+  - vlc
+  - adobe-acrobat-reader
+  - xnviewmp
+  - iina
+
+  ## Design   #- drawio - figma
+  - imageoptim
+
+  ## Browsers   #- microsoft-edge - yandex   - google-chrome
+  - firefox
+
+  ## English
+  - anki
+
+  ## Utils   #- marta   - keycastr   - launchcontrol - timemachineeditor - macs-fan-control - spaceman - gray - libreoffice - numi - alfred
+  - raycast
+  - evernote
+  - appcleaner
+  - keka
+  - showyedge
+  - quitter
+
+  ## Monitoring CPU,Mem,SSD - stats   - veracrypt
+  - ssdreporter-free
+
+  - macfuse
+
+
+  ## Clouds   - yandex-disk - dropbox - nextcloud
+
+  ## Firewall
+  - little-snitch
+
+mas_email: ""
+mas_password: ""
+mas_installed_apps:
+ - { id: 1005088137,  name: "Mate Translate"}
+ - { id: 1502839586,  name: "Hand Mirror"}
+ - { id: 1452453066,  name: "Hidden Bar"}
+ - { id: 904280696 ,  name: "Things"}
+ - { id: 1270075435,  name: "Strongbox"}
+ - { id: 1064959555,  name: "New File Menu"}
+ - { id: 1509590766,  name: "MuteKey"}
+ - { id: 1295203466,  name: "Microsoft Remote Desktop"}
+ - { id: 1451685025,  name: "WireGuard"}
+ # - { id: 1147396723,  name: "WhatsApp"}
+
+ - { id: 1481669779,  name: "Evernote Web Clipper"}
+ # - { id: 1480933944,  name: "Vimari"}
+ - { id: 1463334954,  name: "SessionRestore"}
+ - { id: 1291898086,  name: "Toggl Track"}
+mas_uninstalled_apps:
+  - { id: 408981434, name: "iMovie" }
+  - { id: 409183694, name: "Keynote" }
+  - { id: 409201541, name: "Pages" }
+  - { id: 409203825, name: "Numbers" }
+  - { id: 682658836, name: "GarageBand" }

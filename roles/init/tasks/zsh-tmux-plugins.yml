@@ -1,0 +1,79 @@
+- name: Get the path to ZSH
+  become: false
+  local_action: command which zsh
+  register: zsh_path
+
+- name: "Ensure homebrew zsh is in allowed shells"
+  lineinfile:
+    path: /etc/shells
+    line: "{{ zsh_path.stdout }}"
+  become: true
+
+- name: Install Oh My ZSH
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  args:
+    creates: "/Users/{{ lookup('env', 'USER') }}/.oh-my-zsh"
+
+#- name: download oh-my-zsh
+#git:
+#repo: "https://github.com/ohmyzsh/ohmyzsh.git"
+#dest: "{{ansible_user_dir}}/.oh-my-zsh"
+- name: Fix permissions after OhMyZsh
+  shell: compaudit | xargs chmod g-w,o-w
+
+- name: download autoupdate custom plugins
+  git:
+    repo: "https://github.com/TamCore/autoupdate-oh-my-zsh-plugins"
+    dest: "{{ansible_user_dir}}/.oh-my-zsh/custom/plugins/autoupdate/"
+
+- name: download zsh-completions
+  git:
+    repo: "https://github.com/zsh-users/zsh-completions"
+    dest: "{{ansible_user_dir}}/.oh-my-zsh/custom/plugins/zsh-completions/"
+
+- name: download zsh-syntax-highlighting
+  git:
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    dest: "{{ansible_user_dir}}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/"
+
+- name: download zsh-autosuggestions
+  git:
+    repo: "https://github.com/zsh-users/zsh-autosuggestions"
+    dest: "{{ansible_user_dir}}/.oh-my-zsh/custom/plugins/zsh-autosuggestions/"
+
+- name: install useful keybindings and fuzzy completion
+  shell: $(brew --prefix)/opt/fzf/install
+
+#- name: get local editor preference
+#pause:
+#prompt: "Please enter the command name you want to use as your default editor (nano/vim/subl -w/code --wait --new-window)[default: vim]?"
+#register: prompt
+
+#- set_fact:
+#EDITOR: "{{ prompt.user_input | default(DEFAULT_EDITOR, true) }}"
+#- name: set default shell to zsh for current user
+#shell: "chsh -s $(which zsh) {{ ansible_user_id }}"
+#become: yes
+#register: chsh_result
+#changed_when: '"chsh: no changes made" not in chsh_result.stderr and chsh_result.rc == 0'
+
+#- name: install oh-my-zsh and configure .zshrc
+#template:
+#src: "zshrc"
+#dest: "{{ansible_user_dir}}/.zshrc"
+#backup: yes
+
+#- name: set default shell to zsh for root
+#shell: chsh -s $(which zsh)
+#become: yes
+#register: chsh_result
+#changed_when: '"chsh: no changes made" not in chsh_result.stderr and chsh_result.rc == 0'
+
+# TMUX plugin manager --------------------------------
+- name: Tmux plugin manager
+  git:
+    repo: "https://github.com/tmux-plugins/tpm"
+    dest: "{{ansible_user_dir}}/.tmux/plugins/tpm"
+
+- name: Install tmux plugin manager
+  shell: ~/.tmux/plugins/tpm/scripts/install_plugins.sh

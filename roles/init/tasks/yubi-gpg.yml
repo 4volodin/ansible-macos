@@ -1,0 +1,46 @@
+---
+- name: "Install homebrew packages"
+  community.general.homebrew:
+    name: [
+      ykman,
+      ykpers,
+      paperkey,
+    ]
+
+- name: Install core packages via brew casks
+  community.general.homebrew_cask:
+    name: [
+      #yubico-yubikey-manager, # isn't supported M1
+      #yubico-authenticator,# isn't supported M1
+      gpg-suite-no-mail,
+    ]
+  ignore_errors: yes
+
+- name: Create ~/Library/LaunchAgents
+  file:
+    path: ~/Library/LaunchAgents
+    state: directory
+    mode: "0700"
+
+- name: Start daemon gpg at login
+  copy:
+    src: gpg-yubi/gpg-agent.daemon.plist
+    dest: ~/Library/LaunchAgents/gpg-agent.daemon.plist
+- name: Setup launch agents for services
+  command: launchctl load -F ~/Library/LaunchAgents/gpg-agent.daemon.plist
+
+- name: Set SSH environment variable for GUI
+  copy:
+    src: gpg-yubi/gpg-agent-symlink-ssh-auth-sock.plist
+    dest: ~/Library/LaunchAgents/gpg-agent-symlink-ssh-auth-sock.plist
+- name: Setup launch agents for services
+  command: launchctl load -F ~/Library/LaunchAgents/gpg-agent-symlink-ssh-auth-sock.plist
+
+- name: Link
+  file:
+    src: /Users/voale/Library/Mobile Documents/com~apple~CloudDocs/dev/.ssh/{{ item }}
+    path: ~/.ssh/{{ item }}
+    state: link
+  with_items:
+    - config
+    - id_rsa-4volodin-yubi.pub
