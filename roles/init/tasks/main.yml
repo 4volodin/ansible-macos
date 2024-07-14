@@ -42,3 +42,7 @@
 - name: other
   import_tasks: other.yml
   tags: other
+
+- name: vscode
+  import_tasks: vscode.yml
+  tags: vscode

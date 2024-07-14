@@ -1,0 +1,120 @@
+---
+# Add something which ensures path is set here
+- name: Install VSCode extensions
+  shell: code --install-extension {{ item }}
+  with_items:
+    #
+    - alefragnani.project-manager
+    - ms-vsliveshare.vsliveshare
+    - EditorConfig.EditorConfig
+    - vscodevim.vim
+
+    ## themes
+    - GitHub.github-vscode-theme
+    - Hyzeta.vscode-theme-github-light
+    - akamud.vscode-theme-onelight
+    - zhuangtongfa.material-theme
+    - pkief.material-icon-theme
+    - naumovs.color-highlight
+
+    ## Git
+    - donjayamanne.githistory
+    - eamodio.gitlens
+    - mhutchie.git-graph
+    - kisstkondoros.vscode-gutter-preview
+    - gitlab.gitlab-workflow
+
+    ## shell scripting
+    ## https://habr.com/ru/articles/583320/
+    - foxundermoon.shell-format
+    - Remisa.shellman
+    - meronz.manpages
+    - timonwong.shellcheck
+    - tetradresearch.vscode-h2o
+    #- rogalmic.bash-debug
+    #- ryu1kn.edit-with-shell
+    #- woozy-masta.shell-script-ide
+    #- mads-hartmann.bash-ide-vscode
+    #- jeff-hykin.better-shellscript-syntax
+
+    ## remote ssh
+    - ms-vscode-remote.remote-ssh
+    - ms-vscode-remote.remote-ssh-edit
+    - ms-vscode.remote-explorer
+
+    ## Docker k8s
+    - ms-azuretools.vscode-docker
+    - exiasr.hadolint
+    - ms-kubernetes-tools.vscode-kubernetes-tools
+    - tim-koehler.helm-intellisense
+    - ms-vscode-remote.remote-containers
+
+    ##
+    - hashicorp.terraform
+    - redhat.vscode-yaml
+
+    ## Utils
+    - formulahendry.code-runner
+    - ms-vscode.hexeditor
+    - ryu1kn.partial-diff
+    - rangav.vscode-thunder-client # api client
+    - geddski.macros               # using macros for Cmd+s
+    - deerawan.vscode-dash
+    - christian-kohler.path-intellisense
+    - shardulm94.trailing-spaces
+    - vittorioromeo.expand-selection-to-scope
+    - streetsidesoftware.code-spell-checker
+    - streetsidesoftware.code-spell-checker-russian
+
+    ## Markdown
+    - bierner.markdown-preview-github-styles
+    - yzhang.markdown-all-in-one
+
+    ## Python
+    - ericsia.pythonsnippets3
+    - ms-python.black-formatter
+    - ms-python.debugpy
+    - ms-python.pylint
+    - ms-python.python
+    - ms-python.vscode-pylance
+
+    ## Jupyter
+    # - ms-toolsai.jupyter
+    # - ms-toolsai.jupyter-keymap
+    # - ms-toolsai.jupyter-renderers
+    # - ms-toolsai.vscode-jupyter-cell-tags
+    # - ms-toolsai.vscode-jupyter-slideshow
+
+    ## diagrams
+    - hediet.vscode-drawio
+    - pomdtr.excalidraw-editor
+
+    ## live server
+    # - ritwickdey.LiveServer
+    ## HTML CSS
+    # - pranaygp.vscode-css-peek
+    # - be5invis.vscode-custom-css
+    # - ecmel.vscode-html-css
+    # - Zignd.html-css-class-completion
+    # - CelianRiboulet.webvalidator
+    # - ritwickdey.live-sass
+    # - formulahendry.auto-rename-tag
+
+    ## JS
+    # - dbaeumer.vscode-eslint
+    # - dsznajder.es7-react-js-snippets
+    # - xabikos.JavaScriptSnippets
+    # - christian-kohler.npm-intellisense
+    #- WallabyJs.quokka-vscode
+
+    # PHP
+    #- bmewburn.vscode-intelephense-client
+    #- onecentlin.laravel-blade
+    #- onecentlin.laravel5-snippets
+    #- ryannaddy.laravel-artisan
+    #- wongjn.php-sniffer
+
+    ## add semicolon
+    # - vmsynkov.colonize
+    # - chrisvltn.vs-code-semicolon-insertion
+
