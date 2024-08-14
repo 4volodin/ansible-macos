@@ -205,7 +205,7 @@ homebrew_cask_apps:
   #- openvpn-connect
   #- netspot
 
-    ## Dev - mongodb-compass - fiddler - beyond-compare #diff tool - sourcetree
+    ## Dev - mongodb-compass - fiddler  - sourcetree - meld  #diff tool
   - docker
   - lens
   - visual-studio-code
@@ -213,7 +213,7 @@ homebrew_cask_apps:
   - fork
   - rapidapi
   - dbeaver-community
-  - meld #diff tool
+  - beyond-compare
 
   ## Virtualization: - utm - virtualbox
 
