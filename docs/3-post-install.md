@@ -486,6 +486,7 @@ _Backup IOS:_
         Toggl Track: ON
         Wi-Fi: ON
         Word Search: ON
+        Toothpick: ON
     maybe:
         Can I Use: ON
         Color Casket: ON
