@@ -22,6 +22,7 @@
 # ---------------------------------------------------------
 #
 - name: Loopback interface
+  tags: loopback
   copy:
     src: loopback-alias/com.user.lo0-loopback.plist
     dest: /Library/LaunchAgents/com.user.lo0-loopback.plist
@@ -30,6 +31,7 @@
     mode: "0644"
   become: true
 - name: Setup launch agent for loopback alias
+  tags: loopback
   command: launchctl load -w /Library/LaunchAgents/com.user.lo0-loopback.plist
   become: true
 
