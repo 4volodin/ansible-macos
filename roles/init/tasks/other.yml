@@ -61,14 +61,6 @@
     src: mic-toggle/Mic-OnOff.workflow
     dest: ~/Library/Services
 
-#
-# find files in ~/Downloads which haven’t been modified within the past 2 weeks and move them into ~/.Trash.
-- name: Clean Downloads
-  copy:
-    src: cleandownloads/com.voale.cleandownloads.plist
-    dest: ~/Library/LaunchAgents/com.voale.cleandownloads.plist
-- name: Launch
-  shell: launchctl load -w ~/Library/LaunchAgents/cleandownloads.plist
 # ---------------------------------------------------------
 #
 - name: Reset quick look
