@@ -66,6 +66,7 @@ homebrew_taps:
   - homebrew/services
   - buo/cask-upgrade  # for brew cu - update cask apps
   - tigase/tigase     # for beagleim
+  - hashicorp/tap
 homebrew_installed_packages:
   - cmake
   - glib
@@ -139,7 +140,8 @@ homebrew_installed_packages:
   - kubectx
   - minikube
   - helm
-  - terraform
+  - hashicorp/tap/terraform
+  - hashicorp/tap/vault
 
   ## Docker
   - dive
