@@ -82,6 +82,35 @@
   become: true
 
 # ---------------------------------------------------------
+# find files in ~/Downloads which haven’t been modified within the past 2 weeks and move them into ~/.Trash.
+# find ~/Downloads -type f -mtime +14 -exec mv {} ~/.Trash/ \\;
+# mv ~/Downloads/*(mw+2) ~/.Trash
+# Go to System Settings app (Control Panel for older macOS)->Privacy & Security->Full Disk Access. You will see a panel with programs listed
+# The only way to get /bin/sh into that list is bring up a Finder window and pick the Go To Folder menu and type /bin/sh then drag the sh file into the list.
+# Make sure the sh entry has the switch on for enabling access
+- name: Clean Downloads
+  tags: cleandownloads
+  copy:
+    src: cleandownloads/com.voale.cleandownloads.plist
+    dest: ~/Library/LaunchAgents/com.voale.cleandownloads.plist
+- name: Launch cleandownloads
+  tags: cleandownloads
+  shell: launchctl load -w ~/Library/LaunchAgents/com.voale.cleandownloads.plist
+
+# ---------------------------------------------------------
+# find ~/Desktop/Screenshots/ -type f -mtime +7 -exec rm -f {} \\;
+- name: Remove screenshots older than 7 days from Desktop
+  tags: cleanscreenshots
+  copy:
+    src: cleanscreenshots/com.voale.cleanscreenshots.plist
+    dest: ~/Library/LaunchAgents/com.voale.cleanscreenshots.plist
+- name: Launch cleanscreenshots
+  tags: cleanscreenshots
+  shell: launchctl load -w ~/Library/LaunchAgents/com.voale.cleanscreenshots.plist
+
+
+# ---------------------------------------------------------
+#
 - name: Create ~/Library/LaunchAgents
   file:
     path: ~/.local/share/nvim/backup
