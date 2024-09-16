@@ -13,26 +13,21 @@
     - [Mutekey](#mutekey)
     - [Hidden Bar](#hidden-bar)
     - [New File Menu](#new-file-menu)
-    - [Just Focus](#just-focus)
     - [SessionRestore](#sessionrestore)
-    - [Vimari](#vimari)
     - [install for iPad](#install-for-ipad)
 - [Apps Downloaded using Brew](#apps-downloaded-using-brew)
     - [Little Snitch (licensed)](#little-snitch-licensed)
     - [Paw (licensed)](#paw-licensed)
     - [Dash (licensed)](#dash-licensed)
-    - [Alfred (licensed)](#alfred-licensed)
     - [Raycast](#raycast)
     - [Karabiner](#karabiner)
     - [ShoweEdge](#showeedge)
     - [Quitter](#quitter)
     - [XnView](#xnview)
-    - [Sonixd](#sonixd)
     - [SSSReporter](#sssreporter)
   - [Stats](#stats)
     - [Firefox](#firefox)
     - [Acrobat Reader](#acrobat-reader)
-    - [Yandex Disk](#yandex-disk)
     - [Evernote](#evernote)
     - [Telegram](#telegram)
     - [VLC](#vlc)
@@ -380,11 +375,6 @@ _Backup IOS:_
     Preferences - General:
             Sync Settings and Saved Sessions : On
 
-#### Vimari
-
-    Vimari - click on Open Configuration file
-        delete "closeTab": "x",
-
 #### install for iPad
 
     Yandex.Translate
@@ -416,30 +406,6 @@ _Backup IOS:_
     Preferences - General:
         Syncing - SetUp Syncing - Set Sync Folder: ~/iCloud Drive/dev/dash
         Enable all checkboxes
-
-#### Alfred (licensed)
-
-    Preferences - Appearance - Options:
-        Hide menu bar icon: ON
-
-    Workflows:
-        curl -O -L https://github.com/konoui/alfred-tldr/releases/latest/download/tldr.alfredworkflow && open tldr.alfredworkflow
-
-        curl -O -L https://github.com/sebastiandedeyne/naming-things-alfred-workflow/raw/master/naming-things.alfredworkflow && open naming-things.alfredworkflow
-
-        curl -O -L https://github.com/alexchantastic/alfred-lipsum-workflow/releases/latest/download/alfred-lipsum-workflow.alfredworkflow && open alfred-lipsum-workflow.alfredworkflow
-
-        curl -O -L https://github.com/godbout/alfred-airpodspro-battery/releases/latest/download/AirPods.Pro.Battery.alfredworkflow && open AirPods.Pro.Battery.alfredworkflow
-
-        curl -O -L https://github.com/ngreenstein/alfred-process-killer/raw/master/Kill%20Process.alfredworkflow && open Kill%20Process.alfredworkflow
-
-        curl -O -L https://github.com/Acidham/alfred-apple-reminder/releases/latest/download/Apple.Reminders.alfredworkflow && open Apple.Reminders.alfredworkflow
-
-        curl -O -L https://github.com/shisaq/amphetamine4_alfred_workflow/releases/latest/download/Amphetamine4.Switch.alfredworkflow && open Amphetamine4.Switch.alfredworkflow
-
-        curl -O -L https://github.com/packal/repository/raw/master/tylereich.colors/colors_v2.0.1.alfredworkflow && open colors_v2.0.1.alfredworkflow
-
-        curl -O -L https://github.com/justinyanme/justfocus-alfred/blob/main/JustFocus.alfredworkflow && open JustFocus.alfredworkflow
 
 #### Raycast
 
@@ -512,32 +478,17 @@ _Backup IOS:_
 #### Quitter
 
     Start quitter at login
-    Edit Rules: [ "Activity Monitor", "Amphetamine", "App Store", "AppCleaner", "Books", "Calendar", "Contacts", "Dash", "Dictionary", "Disk Utility", "Evernote", "FaceTime", "Find My", "Hand Mirror", "Karabiner-Elements", "Karabiner-EventViewer", "Keychain Access", "LaunchControl", "Little Snitch", "Mail", "Maps", "Messages", "Music", "News", "Photos", "Podcasts", "Preview", "QuickTime Player", "Reminders", "Shortcuts", "Skype", "Slack", "Sonixd", "StrongBox", "SystemSettings", "Telegram", "VLC media player", "WhatsApp", "WireGuard", "Yandex.Disk"]
+    Edit Rules: [ "Activity Monitor", "Amphetamine", "App Store", "AppCleaner", "Books", "Calendar", "Contacts", "Dictionary", "Disk Utility", "FaceTime", "Find My", "Hand Mirror", "Karabiner-Elements", "Karabiner-EventViewer", "Keychain Access", "LaunchControl", "Little Snitch", "Mail", "Maps", "Messages", "Music", "News", "Photos", "Podcasts", "Preview", "Reminders", "Shortcuts", "Skype", "SystemSettings", "Telegram"]
 
 #### XnView
 
     Preferences-> Inteface-> Keyboard-> Space - Next file
-
-#### Sonixd
-
-    Preferences-> Player:
-        Global Media Hotkeys: ON
-        System Notifications: ON
-    Apple-SystemPreferences-> Security && Privacy-> Accessibility:
-        Sonixd.app: ON
 
 #### SSSReporter
 
     Launch SSDReporter at login : On
     Display in Menubar instead of the Dock : On
     Settings - Appearance - Display App-Icon: Nowhere
-
-### Stats
-
-    Preferences:
-        Network:
-            Module Settings:
-                Connectivity host (ICMP) : 'Leave empty'
 
 #### Firefox
 
@@ -576,12 +527,6 @@ _Backup IOS:_
         Documents:
             Remember current state of Tools Pane
 
-#### Yandex Disk
-
-    Preferences:
-        More:
-            Hide icon in Dock: ON
-
 #### Evernote
 
     Preferences - Application:
@@ -607,13 +552,6 @@ _Backup IOS:_
             Enable VirtioFS accelerated sharing : On
 
 ## UNPAID
-
-#### Valentina Studio
-
-    Complete Registration
-        Check for updated on startup : OFF
-        Check for beta versions : OFF
-        Send anonymous system profile : OFF
 
 #### Multitouch:
 

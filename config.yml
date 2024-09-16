@@ -211,7 +211,6 @@ homebrew_cask_apps:
   - docker
   - lens
   - visual-studio-code
-  - dash
   - fork
   - rapidapi
   - dbeaver-community
@@ -219,11 +218,9 @@ homebrew_cask_apps:
 
   ## Virtualization: - utm - virtualbox
 
-  ## Social   # - viber - slack - rocket-chat - beagleim
-  - zoom
+  ## Social   # - viber - rocket-chat - beagleim  - zoom - skype
+  - slack
   - telegram
-  - skype
-
 
   ## Media   #- screenflow - paintbrush - cleanshot - maccy - iina
   - vlc
