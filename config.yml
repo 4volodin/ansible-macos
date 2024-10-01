@@ -60,9 +60,9 @@ dockitems_persist:
     pos: 9
 
 homebrew_taps:
-  - homebrew/core
-  - homebrew/cask
-  - homebrew/cask-fonts
+  # - homebrew/core
+  # - homebrew/cask
+  # - homebrew/cask-fonts
   - homebrew/services
   - buo/cask-upgrade  # for brew cu - update cask apps
   - tigase/tigase     # for beagleim
@@ -119,7 +119,7 @@ homebrew_installed_packages:
   - watch
 
   ## Net utils   #- curlie - httpie - socat - ipcalc
-  - ngrok
+  # - ngrok
   - curl
   - nmap
   - telnet
@@ -138,10 +138,12 @@ homebrew_installed_packages:
   ## kuber
   - kubectl
   - kubectx
-  - minikube
   - helm
   - hashicorp/tap/terraform
   - hashicorp/tap/vault
+  - k3d
+  - kind
+  - minikube
 
   ## Docker
   - dive
@@ -207,7 +209,7 @@ homebrew_cask_apps:
   #- openvpn-connect
   #- netspot
 
-    ## Dev - mongodb-compass - fiddler  - sourcetree - meld  #diff tool
+    ## Dev - mongodb-compass - fiddler  - sourcetree - meld  - redisinsight
   - docker
   - lens
   - visual-studio-code
@@ -215,6 +217,8 @@ homebrew_cask_apps:
   - rapidapi
   - dbeaver-community
   - beyond-compare
+  - mongodb-compass
+  - another-redis-desktop-manager
 
   ## Virtualization: - utm - virtualbox
 
@@ -254,7 +258,7 @@ homebrew_cask_apps:
   ## Clouds   - yandex-disk - dropbox - nextcloud
 
   ## Firewall
-  - little-snitch
+  #  - little-snitch
 
 mas_email: ""
 mas_password: ""

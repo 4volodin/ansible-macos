@@ -30,6 +30,8 @@ JetBrains: Export/sync settings to ...
 
 VSCode: Sync settings to github
 
+Raycast:  Save /Users/xxx/Library/Application Support/com.raycast.macos
+
 Dotfiles push to github:
 ```
 dotfiles status -s

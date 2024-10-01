@@ -4,7 +4,7 @@
 xcode-select --install
 
 ## install Rosetta for winbox, bin/dark-mode-notify, vnc-viewer
-# /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+/usr/sbin/softwareupdate --install-rosetta --agree-to-license
 
 sudo spctl --master-disable
 

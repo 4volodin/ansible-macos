@@ -1,7 +1,15 @@
+- name: Ensure .zshrc exists
+  file:
+    path: "{{ ansible_user_dir }}/.zshrc"
+    state: touch
+    mode: '0644'
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
 - name: Create alias for dotfiles
   lineinfile:
     path: "{{ansible_user_dir}}/.zshrc"
     line: alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+    create: yes
 - name: Backup conf files
   shell: mkdir -p ~/.dotfiles-backup && git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME checkout 2>&1 | egrep "\s+\." | awk {'print $2'} | xargs -I{} mkdir -p $HOME/.dotfiles-backup/{} && cp -p $HOME/{} $HOME/.dotfiles-backup/{}
 
